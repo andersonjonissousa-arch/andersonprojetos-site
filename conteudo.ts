@@ -83,14 +83,13 @@ export const CASES: Case[] = [
   {
     id: 'ramos',
     publicar: true,
-    nome: 'Ramos',
-    tipo: 'Site institucional',
-    // TODO: trocar pelos dados reais do projeto da Ramos
-    resumo: 'Site institucional para apresentar a empresa e levar clientes direto para o atendimento.',
-    problema: 'A empresa precisava de uma presença profissional na internet para apresentar seus serviços.',
-    solucao: 'Site rápido, adaptado ao celular, com os serviços da empresa e contato direto pelo WhatsApp.',
-    resultados: ['Presença profissional na internet', 'Contato direto pelo WhatsApp'],
-    ferramentas: ['Next.js', 'Vercel'],
+    nome: 'Ramos Renováveis',
+    tipo: 'Sistema de gestão de manutenção eólica',
+    resumo: 'Plataforma web feita do zero para uma empresa que faz manutenção de cubículos para parques eólicos em vários estados.',
+    problema: 'Não havia controle nenhum, nem planilha. Saber onde estava cada equipamento, em que etapa do serviço e o que já tinha sido feito dependia da memória da equipe.',
+    solucao: 'Um sistema para todo o ciclo de manutenção: recebimento com fotos da coleta, prontuário de cada equipamento com código MR, ordens de serviço, checklists por etapa definidos pela própria empresa, etiquetas com QR Code, relatórios e laudos automáticos e acessos diferentes para gestores, técnicos e motoristas. Os clientes da Ramos acompanham tudo por um portal exclusivo, com etapa de cada equipamento, indicadores, fotos, histórico e laudos para baixar.',
+    resultados: ['Operação 100% digital e rastreável', 'Gestão vê o andamento de tudo em tempo real', 'Clientes se informam sozinhos pelo portal'],
+    ferramentas: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
   },
   {
     id: 'fono',
@@ -121,7 +120,7 @@ export const SOBRE = {
     'Unindo desenvolvimento web, automação e análise de dados, entrego soluções que resolvem problemas reais do dia a dia, como o Tivla, um sistema que eu criei do zero e que hoje é usado por clínicas da região.',
     'Atendo presencialmente em Limoeiro do Norte e região, e a distância em todo o Brasil.',
   ],
-  foto: '', // ex.: '/anderson.jpg' (coloque a foto em /public)
+  foto: '/anderson.jpg',
 };
 
 export const DUVIDAS = [
