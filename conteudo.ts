@@ -114,10 +114,10 @@ export const PASSOS = [
 ];
 
 export const SOBRE = {
-  // TODO: trocar pelo texto com a sua história
   paragrafos: [
-    'Sou o Anderson. Crio sites, sistemas e automações para empresas que querem trabalhar com mais organização e menos tarefa manual.',
-    'Unindo desenvolvimento web, automação e análise de dados, entrego soluções que resolvem problemas reais do dia a dia, como o Tivla, um sistema que eu criei do zero e que hoje é usado por clínicas da região.',
+    'Sou o Anderson Sousa, formado em Física pela Universidade Estadual do Ceará (UECE) e técnico em Meio Ambiente.',
+    'Trabalho no Hospital Regional do Vale do Jaguaribe (HRVJ/ISGH). Comecei como auxiliar administrativo e hoje sou assistente administrativo do Núcleo de Qualidade e Segurança do Paciente (NUGESP), uma área em que processo bem feito, registro organizado e indicador confiável fazem diferença todos os dias.',
+    'Também iniciei a graduação tecnológica em Ciência de Dados. Uno essa base analítica ao desenvolvimento web e à automação para criar sistemas que resolvem problemas reais, como o Tivla, usado por clínicas da região, e a plataforma de manutenção da Ramos Renováveis.',
     'Atendo presencialmente em Limoeiro do Norte e região, e a distância em todo o Brasil.',
   ],
   foto: '/anderson.jpg',
