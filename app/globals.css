@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+}
+
+html { scroll-behavior: smooth; }
+body { background: #ffffff; color: #0f172a; }
