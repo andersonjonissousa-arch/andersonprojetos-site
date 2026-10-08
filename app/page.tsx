@@ -186,7 +186,7 @@ export default function Home() {
         <section id="sobre" className="scroll-mt-4 bg-slate-950">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-[auto_1fr]">
             {SOBRE.foto ? (
-              <Image src={SOBRE.foto} alt={PERFIL.nome} width={224} height={224} className="mx-auto h-48 w-48 rounded-3xl object-cover ring-4 ring-teal-500/30 sm:h-56 sm:w-56" />
+              <Image src={SOBRE.foto} alt={PERFIL.nome} width={320} height={400} sizes="(min-width: 640px) 320px, 256px" className="mx-auto h-80 w-64 rounded-3xl object-cover ring-4 ring-teal-500/30 sm:h-[400px] sm:w-80" />
             ) : (
               <div className="mx-auto flex h-48 w-48 items-center justify-center rounded-3xl bg-gradient-to-br from-teal-500 to-indigo-500 text-6xl font-extrabold text-white sm:h-56 sm:w-56" aria-hidden="true">{iniciais}</div>
             )}
