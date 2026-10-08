@@ -77,7 +77,7 @@ export const CASES: Case[] = [
     solucao: 'Um sistema web com agenda da equipe, confirmação automática pelo WhatsApp (a cliente responde 1 ou 2), lembretes, ficha de anamnese online, prontuário com mapa facial, financeiro e estoque.',
     resultados: ['Confirmação de horários automática', 'Prontuário digital, sem papel', 'Lembretes e pesquisa de satisfação pelo WhatsApp'],
     ferramentas: ['Next.js', 'Supabase', 'Vercel', 'WhatsApp'],
-    imagem: '/cases/tivla.png',
+    imagem: '/cases/tivla.webp',
     link: 'https://tivla.com.br',
   },
   {
@@ -101,7 +101,7 @@ export const CASES: Case[] = [
     solucao: 'Site com as áreas de atendimento para crianças e adultos explicadas em linguagem simples, um guia de sinais para saber quando procurar uma fonoaudióloga, uma seção sobre cirurgia com o paciente acordado, formação, cursos, dúvidas frequentes e agendamento direto pelo WhatsApp.',
     resultados: ['Especialidade explicada em linguagem simples', 'Guia de sinais para crianças e adultos', 'Agendamento direto pelo WhatsApp'],
     ferramentas: ['Astro', 'Netlify', 'WhatsApp'],
-    imagem: '/cases/fono.png',
+    imagem: '/cases/fono.webp',
     link: 'https://dreamy-marigold-0eb071.netlify.app',
   },
 ];
@@ -122,7 +122,7 @@ export const SOBRE = {
     'Também iniciei a graduação tecnológica em Ciência de Dados. Uno essa base analítica ao desenvolvimento web e à automação para criar sistemas que resolvem problemas reais, como o Tivla, usado por clínicas da região, e a plataforma de manutenção da Ramos Renováveis.',
     'Atendo presencialmente em Limoeiro do Norte e região, e a distância em todo o Brasil.',
   ],
-  foto: '/anderson.jpg',
+  foto: '/anderson.webp',
 };
 
 export const DUVIDAS = [
