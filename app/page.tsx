@@ -127,7 +127,7 @@ export default function Home() {
                           <span className="h-2.5 w-2.5 rounded-full bg-red-400" /><span className="h-2.5 w-2.5 rounded-full bg-amber-400" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
                           {c.link && <span className="ml-3 truncate rounded bg-white px-2 py-0.5 text-[11px] text-slate-500">{c.link.replace('https://', '')}</span>}
                         </div>
-                        <Image src={c.imagem} alt={`Página do ${c.nome}`} width={1920} height={1200} sizes="(min-width: 1024px) 560px, 100vw" className="h-auto w-full" />
+                        <Image src={c.imagem} alt={`Tela do projeto ${c.nome}`} width={1920} height={1200} sizes="(min-width: 1024px) 560px, 100vw" className="h-auto w-full" />
                       </div>
                     ) : (
                       <div className="flex min-h-48 w-full items-center justify-center">

@@ -93,14 +93,16 @@ export const CASES: Case[] = [
   },
   {
     id: 'fono',
-    publicar: false, // ligar quando o site da fonoaudióloga for entregue
-    nome: 'Fonoaudiologia',
-    tipo: 'Site profissional',
-    resumo: 'Site para consultório de fonoaudiologia.',
-    problema: '',
-    solucao: '',
-    resultados: [],
-    ferramentas: ['Next.js'],
+    publicar: true,
+    nome: 'Fátima Pessoa',
+    tipo: 'Site profissional para fonoaudióloga',
+    resumo: 'Site para uma fonoaudióloga especialista em Fonoaudiologia Neurofuncional, com atendimento em Fortaleza e Limoeiro do Norte.',
+    problema: 'Apresentar uma especialidade técnica, que vai do atraso de fala na infância à cirurgia com o paciente acordado, de um jeito que pais, familiares e pacientes entendam e se sintam seguros para agendar.',
+    solucao: 'Site com as áreas de atendimento para crianças e adultos explicadas em linguagem simples, um guia de sinais para saber quando procurar uma fonoaudióloga, uma seção sobre cirurgia com o paciente acordado, formação, cursos, dúvidas frequentes e agendamento direto pelo WhatsApp.',
+    resultados: ['Especialidade explicada em linguagem simples', 'Guia de sinais para crianças e adultos', 'Agendamento direto pelo WhatsApp'],
+    ferramentas: ['Astro', 'Netlify', 'WhatsApp'],
+    imagem: '/cases/fono.png',
+    link: 'https://dreamy-marigold-0eb071.netlify.app',
   },
 ];
 
