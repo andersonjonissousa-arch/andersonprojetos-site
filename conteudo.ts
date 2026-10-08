@@ -8,7 +8,7 @@ export const PERFIL = {
   regiao: 'Limoeiro do Norte e região do Vale do Jaguaribe',
   whatsapp: '5588994607524',
   // Preencha quando quiser mostrar no site (deixe vazio para esconder)
-  instagram: '', // ex.: 'https://instagram.com/andersonprojetos'
+  instagram: 'https://www.instagram.com/anderson_johnnys/',
   email: '',     // ex.: 'contato@andersonprojetos.com.br'
   site: 'https://andersonprojetos.com.br',
 };
