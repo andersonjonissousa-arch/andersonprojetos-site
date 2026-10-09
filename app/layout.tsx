@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
-import { PERFIL } from '@/conteudo';
+import { META_PIXEL_ID, PERFIL } from '@/conteudo';
+import PixelMeta from './PixelMeta';
 import './globals.css';
 
 const geist = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
@@ -18,7 +19,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${geist.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${geist.variable} font-sans antialiased`}>
+        {children}
+        {META_PIXEL_ID && <PixelMeta id={META_PIXEL_ID} />}
+      </body>
     </html>
   );
 }

@@ -13,6 +13,9 @@ export const PERFIL = {
   site: 'https://andersonprojetos.com.br',
 };
 
+// ID do Pixel da Meta (Gerenciador de Eventos). Vazio = Pixel desligado.
+export const META_PIXEL_ID = '';
+
 export const MENSAGEM_WHATSAPP = 'Olá, Anderson! Vi seu site e quero conversar sobre um projeto para a minha empresa.';
 
 export function linkWhatsApp(mensagem = MENSAGEM_WHATSAPP): string {

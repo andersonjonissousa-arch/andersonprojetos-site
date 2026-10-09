@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
 
 // Site profissional do Anderson: serviços, cases e contato. Conteúdo em /conteudo.ts.
@@ -239,6 +240,7 @@ export default function Home() {
             {PERFIL.instagram && <a href={PERFIL.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>}
             {PERFIL.email && <a href={`mailto:${PERFIL.email}`} className="hover:text-white">{PERFIL.email}</a>}
             <a href={linkWhatsApp()} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp</a>
+            <Link href="/privacidade" className="hover:text-white">Privacidade</Link>
           </div>
           <p>© {new Date().getFullYear()} {PERFIL.marca}</p>
         </div>

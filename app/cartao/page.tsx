@@ -95,6 +95,10 @@ export default function Cartao() {
         <Image src="/cartao-qr.svg" alt="QR Code do cartão digital" width={96} height={96} className="h-24 w-24 shrink-0" unoptimized />
         <p className="text-sm leading-relaxed text-slate-600">Aponte a câmera do celular para abrir este cartão e <strong className="text-slate-900">salvar o contato</strong>.</p>
       </div>
+
+      <p className="mt-6 text-center text-xs text-slate-500">
+        <Link href="/privacidade" className="hover:underline">Política de Privacidade</Link>
+      </p>
     </main>
   );
 }
