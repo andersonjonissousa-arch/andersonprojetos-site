@@ -105,7 +105,7 @@ export const CASES: Case[] = [
     resultados: ['Especialidade explicada em linguagem simples', 'Guia de sinais para crianças e adultos', 'Agendamento direto pelo WhatsApp'],
     ferramentas: ['Astro', 'Netlify', 'WhatsApp'],
     imagem: '/cases/fono.webp',
-    link: 'https://dreamy-marigold-0eb071.netlify.app',
+    link: 'https://fonofatimapessoa.com.br',
   },
 ];
 
