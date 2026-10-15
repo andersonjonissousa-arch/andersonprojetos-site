@@ -2,7 +2,7 @@
 // Roda na Cloudflare Pages (Pages Functions). A chave da Anthropic fica guardada como
 // segredo na Cloudflare (ANTHROPIC_API_KEY) e nunca vai para o navegador.
 import Anthropic from '@anthropic-ai/sdk';
-import { ATENDENTE, CASES, DUVIDAS, PASSOS, PERFIL, SERVICOS } from '../../conteudo';
+import { ATENDENTE, CASES, DUVIDAS, PASSOS, PERFIL, PLANILHA_SISTEMA, SERVICOS } from '../../conteudo';
 
 interface Env {
   ANTHROPIC_API_KEY?: string;
@@ -40,6 +40,8 @@ Seu objetivo é tirar dúvidas com clareza e, quando a pessoa tiver interesse, a
 <negocio>
 Serviços:
 ${servicos}
+
+Da planilha ao sistema: ${PLANILHA_SISTEMA.texto} Serve para ${PLANILHA_SISTEMA.exemplos}. ${PLANILHA_SISTEMA.excel} Tem uma demonstração para testar à vontade, com dados fictícios (um sistema de ordens de serviço): ${PERFIL.site}/demonstracao
 
 Preço do site profissional: ${ATENDENTE.oferta}
 Sistemas, apps, automações e dashboards não têm preço fixo: o Anderson conversa com a pessoa e manda uma proposta por escrito com prazo e valor, sem compromisso.

@@ -167,6 +167,24 @@ export const DUVIDAS = [
   { p: 'Preciso entender de tecnologia?', r: 'Não. Eu explico tudo de forma simples e ensino sua equipe a usar.' },
 ];
 
+// Oferta "Da planilha ao sistema": seção na página inicial e assunto do atendente virtual.
+export const PLANILHA_SISTEMA = {
+  titulo: 'Sua empresa vive de planilha? Eu transformo em um sistema.',
+  texto: 'Você continua com a sua planilha do Google, mas ganha um sistema organizado por cima dela: tudo o que é salvo no sistema aparece na planilha. Roda na sua própria conta Google, sem mensalidade de servidor.',
+  vantagens: ['Painel com os números do dia', 'Cadastro por formulário, sem bagunça', 'Busca e filtros em segundos', 'Aviso ao cliente pelo WhatsApp', 'Funciona no computador e no celular', 'Os dados continuam no seu Google Drive'],
+  exemplos: 'ordens de serviço, vendas e estoque, clientes e fiado, agenda, controles internos e indicadores',
+  excel: 'Usa Excel? Eu passo a sua planilha para o Google Planilhas.',
+  mensagem: 'Olá, Anderson! Vi no site o serviço de transformar planilha em sistema e quero organizar a minha.',
+  telas: [
+    { src: '/cases/planilha-1.webp', legenda: 'Antes: a planilha de sempre, cada um anota de um jeito' },
+    { src: '/cases/planilha-2.webp', legenda: 'Depois: painel com os números do dia' },
+    { src: '/cases/planilha-3.webp', legenda: 'Ordens com busca e filtros' },
+    { src: '/cases/planilha-4.webp', legenda: 'Cada ordem: situação, pagamento e aviso no WhatsApp' },
+    { src: '/cases/planilha-5.webp', legenda: 'Nova ordem num formulário simples' },
+    { src: '/cases/planilha-6.webp', legenda: 'E a planilha continua lá, organizada' },
+  ] as Tela[],
+};
+
 // Demonstração ao vivo do sistema de ordens de serviço (Google Apps Script), em /demonstracao.
 export const DEMONSTRACAO = {
   url: 'https://script.google.com/macros/s/AKfycbxEZZY2D3KUdqa-iDOCo2GPeSSLZ5Y5B8tQQYTGG3m0_KekA27XKDlrh1AjuO5ExpEL/exec',
