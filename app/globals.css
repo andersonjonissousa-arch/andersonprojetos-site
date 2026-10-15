@@ -6,3 +6,13 @@
 
 html { scroll-behavior: smooth; }
 body { background: #ffffff; color: #0f172a; }
+
+/* Entrada suave da primeira tela (só CSS, para não esperar o JavaScript) */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+.surgir { animation: surgir 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .surgir { animation: none; }
+}
