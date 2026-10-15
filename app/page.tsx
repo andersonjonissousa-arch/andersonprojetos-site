@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
+import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, PLANILHA_SISTEMA, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
 import BolinhasHero from './BolinhasHero';
 import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
@@ -27,6 +27,19 @@ function IconeWhats({ className = 'h-5 w-5' }: { className?: string }) {
   );
 }
 
+// Moldura de janela de navegador em volta das telas de um projeto.
+function JanelaNavegador({ endereco, children }: { endereco?: string; children: React.ReactNode }) {
+  return (
+    <div className="w-full overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-white/10">
+      <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2" aria-hidden="true">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-400" /><span className="h-2.5 w-2.5 rounded-full bg-amber-400" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+        {endereco && <span className="ml-3 truncate rounded bg-white px-2 py-0.5 text-[11px] text-slate-500">{endereco}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
 function Marca({ clara = false }: { clara?: boolean }) {
   return (
     <span className="flex items-center gap-2.5">
@@ -48,6 +61,7 @@ export default function Home() {
           <a href="#" aria-label={`${PERFIL.marca}, início`}><Marca clara /></a>
           <div className="hidden items-center gap-7 text-sm font-medium text-slate-300 md:flex">
             <a href="#servicos" className="hover:text-white">Serviços</a>
+            <a href="#planilha" className="hover:text-white">Planilhas</a>
             <a href="#cases" className="hover:text-white">Projetos</a>
             <a href="#como-trabalho" className="hover:text-white">Como trabalho</a>
             <a href="#sobre" className="hover:text-white">Sobre</a>
@@ -117,6 +131,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* DA PLANILHA AO SISTEMA */}
+        <section id="planilha" className="scroll-mt-4 bg-slate-950">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wider text-teal-400">Da planilha ao sistema</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">{PLANILHA_SISTEMA.titulo}</h2>
+              <p className="mt-4 leading-relaxed text-slate-300">{PLANILHA_SISTEMA.texto}</p>
+              <ul className="mt-6 grid gap-2.5 text-sm text-slate-200 sm:grid-cols-2">
+                {PLANILHA_SISTEMA.vantagens.map(v => (
+                  <li key={v} className="flex gap-2"><span className="text-teal-400" aria-hidden="true">✓</span>{v}</li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm leading-relaxed text-slate-400">Serve para {PLANILHA_SISTEMA.exemplos}. {PLANILHA_SISTEMA.excel}</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link href="/demonstracao" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-teal-500 px-6 text-base font-bold text-slate-950 hover:bg-teal-400">
+                  Testar a demonstração <Seta />
+                </Link>
+                <a href={linkWhatsApp(PLANILHA_SISTEMA.mensagem)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-6 text-base font-semibold text-white ring-1 ring-white/20 hover:bg-white/5">
+                  <IconeWhats /> Quero organizar a minha
+                </a>
+              </div>
+            </div>
+            <JanelaNavegador endereco="andersonprojetos.com.br/demonstracao">
+              <CarrosselTelas nome="Da planilha ao sistema" telas={PLANILHA_SISTEMA.telas} />
+            </JanelaNavegador>
+          </div>
+        </section>
+
         {/* CASES */}
         <section id="cases" className="scroll-mt-4 bg-slate-50">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
@@ -127,17 +169,13 @@ export default function Home() {
                 <article key={c.id} className="grid overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 lg:grid-cols-2">
                   <div className="flex items-center bg-gradient-to-br from-slate-900 to-slate-800 p-5 sm:p-8">
                     {c.imagem || c.telas?.length ? (
-                      <div className="w-full overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-white/10">
-                        <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2" aria-hidden="true">
-                          <span className="h-2.5 w-2.5 rounded-full bg-red-400" /><span className="h-2.5 w-2.5 rounded-full bg-amber-400" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                          {c.link && <span className="ml-3 truncate rounded bg-white px-2 py-0.5 text-[11px] text-slate-500">{c.link.replace('https://', '')}</span>}
-                        </div>
+                      <JanelaNavegador endereco={c.link?.replace('https://', '')}>
                         {c.telas?.length ? (
                           <CarrosselTelas nome={c.nome} telas={c.telas} />
                         ) : (
                           c.imagem && <Image src={c.imagem} alt={`Tela do projeto ${c.nome}`} width={1920} height={1200} sizes="(min-width: 1024px) 560px, 100vw" className="h-auto w-full" />
                         )}
-                      </div>
+                      </JanelaNavegador>
                     ) : (
                       <div className="flex min-h-48 w-full items-center justify-center">
                         <span className="text-4xl font-extrabold tracking-tight text-white/90">{c.nome}</span>
