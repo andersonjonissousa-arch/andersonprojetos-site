@@ -79,6 +79,7 @@ export default function Privacidade() {
           <p>Os dados não são vendidos. Eles podem ser tratados por serviços que fazem o site funcionar e ser divulgado:</p>
           <ul className="list-disc space-y-1.5 pl-5">
             <li><strong>Meta</strong> (Pixel, Facebook, Instagram e WhatsApp);</li>
+            <li><strong>Google e Make</strong>, ferramentas que uso para organizar os contatos recebidos e ser avisado quando chega um novo;</li>
             <li><strong>empresa de hospedagem do site</strong>, que registra acessos para manter o site no ar e seguro.</li>
           </ul>
           <p>Alguns desses serviços podem armazenar dados fora do Brasil, seguindo as próprias políticas de privacidade.</p>
