@@ -9,7 +9,7 @@ export const PERFIL = {
   whatsapp: '5588994607524',
   // Preencha quando quiser mostrar no site (deixe vazio para esconder)
   instagram: 'https://www.instagram.com/anderson_johnnys/',
-  email: '',     // ex.: 'contato@andersonprojetos.com.br'
+  email: 'contato@andersonprojetos.com.br',
   site: 'https://andersonprojetos.com.br',
 };
 

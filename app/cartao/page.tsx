@@ -32,6 +32,7 @@ const D = {
   site: 'M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 010 18M12 3a14 14 0 000 18',
   instagram: 'M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm9 4h.01M12 16a4 4 0 100-8 4 4 0 000 8z',
   projetos: 'M3 7h18v13H3zM8 7V5a2 2 0 012-2h4a2 2 0 012 2v2',
+  email: 'M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z',
   compartilhar: 'M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4',
 };
 
@@ -44,6 +45,9 @@ function IconeWhats() {
 }
 
 const botaoClaro = 'flex min-h-14 w-full items-center justify-center gap-2.5 rounded-2xl border-2 border-slate-200 bg-white px-4 text-base font-bold text-slate-900 hover:border-teal-400';
+
+// Botões da grade de 2 colunas (Instagram, E-mail, Projetos): se a conta der ímpar, "Projetos" ocupa a linha inteira.
+const atalhosNaGrade = [PERFIL.instagram, PERFIL.email].filter(Boolean).length + 1;
 
 export default function Cartao() {
   return (
@@ -79,7 +83,12 @@ export default function Cartao() {
                   <Icone d={D.instagram} /> Instagram
                 </a>
               )}
-              <Link href="/#cases" className={`${botaoClaro} ${PERFIL.instagram ? '' : 'col-span-2'}`}>
+              {PERFIL.email && (
+                <a href={`mailto:${PERFIL.email}`} className={botaoClaro}>
+                  <Icone d={D.email} /> E-mail
+                </a>
+              )}
+              <Link href="/#cases" className={`${botaoClaro} ${atalhosNaGrade % 2 ? 'col-span-2' : ''}`}>
                 <Icone d={D.projetos} /> Projetos
               </Link>
             </div>
