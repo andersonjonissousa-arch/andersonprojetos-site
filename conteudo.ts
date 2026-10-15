@@ -135,3 +135,15 @@ export const DUVIDAS = [
   { p: 'Depois de pronto, quem cuida?', r: 'Eu continuo dando suporte. Ajustes, melhorias e hospedagem podem ser combinados em um plano mensal.' },
   { p: 'Preciso entender de tecnologia?', r: 'Não. Eu explico tudo de forma simples e ensino sua equipe a usar.' },
 ];
+
+// Atendente virtual (chat com IA no canto do site). Ele responde usando as listas acima
+// (serviços, projetos, passos e dúvidas) e o que estiver aqui.
+export const ATENDENTE = {
+  ligado: true,
+  // Modelo do Claude: 'claude-opus-5-5' (o mais capaz) ou 'claude-haiku-5-5' (bem mais barato).
+  modelo: 'claude-opus-5-5',
+  // Oferta de site com preço fixo (a mesma dos anúncios).
+  oferta: 'Site profissional: R$ 600 a criação (em até 6x de R$ 100) + R$ 80 por mês, com domínio, hospedagem e até 2 pequenas alterações por mês. Todo site vem com um cartão digital com QR Code de brinde.',
+  saudacao: 'Olá! Sou o atendente virtual da Anderson Projetos. Posso tirar suas dúvidas sobre sites, sistemas e automações. Como posso ajudar?',
+  sugestoes: ['Quanto custa um site?', 'Quais projetos você já fez?', 'Como funciona o processo?'],
+};

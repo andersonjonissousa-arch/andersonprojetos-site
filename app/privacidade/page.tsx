@@ -51,6 +51,7 @@ export default function Privacidade() {
           <p><strong>Dados de navegação.</strong> Ao visitar o site, podem ser registradas informações como páginas visitadas, botões clicados, tipo de aparelho e navegador, endereço IP aproximado e data e hora do acesso.</p>
           <p><strong>Dados que você me envia.</strong> Se você me chamar no WhatsApp ou salvar o meu contato, as informações que você escolher compartilhar na conversa (como nome, telefone e a descrição do seu projeto) passam a ser tratadas por mim para responder você.</p>
           <p><strong>Dados dos formulários dos anúncios.</strong> Se você preencher um formulário em um anúncio meu no Facebook ou no Instagram, recebo os dados que você enviar nele (como nome, telefone e as suas respostas). Uso esses dados só para entrar em contato com você, pelo WhatsApp ou por ligação, sobre o serviço que você pediu.</p>
+          <p><strong>Conversas com o atendente virtual.</strong> O atendente do site responde com inteligência artificial. O que você escreve nele é enviado à Anthropic, empresa que fornece a IA (Claude), só para gerar as respostas, e a conversa não fica guardada no site. Se você informar seu nome e WhatsApp para eu te chamar, esses dados chegam até mim junto com um resumo do que você precisa. Não envie dados sensíveis, como documentos, senhas ou informações de saúde.</p>
           <p>O site não tem formulários de cadastro e não pede dados sensíveis.</p>
         </Secao>
 
@@ -80,6 +81,7 @@ export default function Privacidade() {
           <ul className="list-disc space-y-1.5 pl-5">
             <li><strong>Meta</strong> (Pixel, Facebook, Instagram e WhatsApp);</li>
             <li><strong>Google e Make</strong>, ferramentas que uso para organizar os contatos recebidos e ser avisado quando chega um novo;</li>
+            <li><strong>Anthropic</strong> (Claude), que processa as mensagens do atendente virtual para gerar as respostas;</li>
             <li><strong>empresa de hospedagem do site</strong>, que registra acessos para manter o site no ar e seguro.</li>
           </ul>
           <p>Alguns desses serviços podem armazenar dados fora do Brasil, seguindo as próprias políticas de privacidade.</p>
