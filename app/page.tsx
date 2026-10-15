@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
 import BolinhasHero from './BolinhasHero';
+import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
 
 // Site profissional do Anderson: serviços, cases e contato. Conteúdo em /conteudo.ts.
@@ -125,13 +126,17 @@ export default function Home() {
               {cases.map(c => (
                 <article key={c.id} className="grid overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 lg:grid-cols-2">
                   <div className="flex items-center bg-gradient-to-br from-slate-900 to-slate-800 p-5 sm:p-8">
-                    {c.imagem ? (
+                    {c.imagem || c.telas?.length ? (
                       <div className="w-full overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-white/10">
                         <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2" aria-hidden="true">
                           <span className="h-2.5 w-2.5 rounded-full bg-red-400" /><span className="h-2.5 w-2.5 rounded-full bg-amber-400" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
                           {c.link && <span className="ml-3 truncate rounded bg-white px-2 py-0.5 text-[11px] text-slate-500">{c.link.replace('https://', '')}</span>}
                         </div>
-                        <Image src={c.imagem} alt={`Tela do projeto ${c.nome}`} width={1920} height={1200} sizes="(min-width: 1024px) 560px, 100vw" className="h-auto w-full" />
+                        {c.telas?.length ? (
+                          <CarrosselTelas nome={c.nome} telas={c.telas} />
+                        ) : (
+                          c.imagem && <Image src={c.imagem} alt={`Tela do projeto ${c.nome}`} width={1920} height={1200} sizes="(min-width: 1024px) 560px, 100vw" className="h-auto w-full" />
+                        )}
                       </div>
                     ) : (
                       <div className="flex min-h-48 w-full items-center justify-center">
