@@ -167,6 +167,13 @@ export const DUVIDAS = [
   { p: 'Preciso entender de tecnologia?', r: 'Não. Eu explico tudo de forma simples e ensino sua equipe a usar.' },
 ];
 
+// Demonstração ao vivo do sistema de ordens de serviço (Google Apps Script), em /demonstracao.
+export const DEMONSTRACAO = {
+  url: 'https://script.google.com/macros/s/AKfycbxEZZY2D3KUdqa-iDOCo2GPeSSLZ5Y5B8tQQYTGG3m0_KekA27XKDlrh1AjuO5ExpEL/exec',
+  titulo: 'Sistema de ordens de serviço',
+  mensagem: 'Olá, Anderson! Testei a demonstração do sistema de ordens de serviço e quero um sistema assim para a minha empresa.',
+};
+
 // Atendente virtual (chat com IA no canto do site). Ele responde usando as listas acima
 // (serviços, projetos, passos e dúvidas) e o que estiver aqui.
 export const ATENDENTE = {
