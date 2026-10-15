@@ -66,8 +66,12 @@ export type Case = {
   resultados: string[];
   ferramentas: string[];
   imagem?: string;        // arquivo em /public/cases
+  telas?: Tela[];         // várias telas: vira um carrossel no lugar da imagem
   link?: string;
 };
+
+// Uma tela do carrossel: imagem 1200x750 em /public/cases e uma legenda curta.
+export type Tela = { src: string; legenda: string };
 
 export const CASES: Case[] = [
   {
@@ -93,6 +97,26 @@ export const CASES: Case[] = [
     solucao: 'Um sistema para todo o ciclo de manutenção: recebimento com fotos da coleta, prontuário de cada equipamento com código MR, ordens de serviço, checklists por etapa definidos pela própria empresa, etiquetas com QR Code, relatórios e laudos automáticos e acessos diferentes para gestores, técnicos e motoristas. Os clientes da Ramos acompanham tudo por um portal exclusivo, com etapa de cada equipamento, indicadores, fotos, histórico e laudos para baixar.',
     resultados: ['Operação 100% digital e rastreável', 'Gestão vê o andamento de tudo em tempo real', 'Clientes se informam sozinhos pelo portal'],
     ferramentas: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+  },
+  {
+    id: 'sigmq',
+    publicar: true,
+    nome: 'SIGMQ',
+    tipo: 'Site para consultoria em gestão da qualidade',
+    resumo: 'Site para uma consultoria do Vale do Jaguaribe que prepara empresas e serviços de saúde para certificações como ONA e ISO 9001.',
+    problema: 'Explicar um serviço técnico, cheio de siglas (ONA, ISO, PDCA, indicadores), para donos de empresas e gestores de saúde, e passar confiança para a pessoa pedir um diagnóstico.',
+    solucao: 'Um site que mostra o antes e depois da consultoria, as soluções em três pilares, a metodologia em 5 etapas, o plano de trabalho com prazos e entregas, as certificações explicadas em linguagem simples, a equipe e um formulário que envia o pedido de diagnóstico direto pelo WhatsApp. Acompanha um cartão digital com QR Code.',
+    resultados: ['Serviço técnico explicado de forma clara', 'Pedido de diagnóstico direto pelo WhatsApp', 'Cartão digital com QR Code'],
+    ferramentas: ['HTML', 'CSS', 'JavaScript', 'Vercel', 'WhatsApp'],
+    telas: [
+      { src: '/cases/sigmq-1.webp', legenda: 'Página inicial' },
+      { src: '/cases/sigmq-2.webp', legenda: 'O antes e depois da consultoria' },
+      { src: '/cases/sigmq-3.webp', legenda: 'Soluções em três pilares' },
+      { src: '/cases/sigmq-4.webp', legenda: 'Metodologia em 5 etapas' },
+      { src: '/cases/sigmq-5.webp', legenda: 'Certificações explicadas' },
+      { src: '/cases/sigmq-6.webp', legenda: 'Contato e pedido de diagnóstico pelo WhatsApp' },
+    ],
+    link: 'https://site-sigmq.vercel.app',
   },
   {
     id: 'fono',
