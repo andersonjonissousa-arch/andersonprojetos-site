@@ -24,6 +24,7 @@ export default function PixelMeta({ id }: { id: string }) {
       if (!link || !fbq) return;
       if (link.href.startsWith('https://wa.me/')) fbq('track', 'Contact', { content_name: 'WhatsApp' });
       else if (link.href.endsWith('.vcf')) fbq('track', 'Contact', { content_name: 'Salvar contato' });
+      else if (link.href.startsWith('mailto:')) fbq('track', 'Contact', { content_name: 'E-mail' });
     }
     document.addEventListener('click', aoClicar);
     return () => document.removeEventListener('click', aoClicar);
