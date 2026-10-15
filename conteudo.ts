@@ -167,7 +167,7 @@ export const DUVIDAS = [
   { p: 'Preciso entender de tecnologia?', r: 'Não. Eu explico tudo de forma simples e ensino sua equipe a usar.' },
 ];
 
-// Faixa de impacto depois da primeira tela: frase que acende ao rolar, números e telas flutuando.
+// Faixa de impacto depois da primeira tela: frase que acende ao rolar e números.
 export const MANIFESTO = {
   frase: 'Seu cliente decide em poucos segundos se confia na sua empresa. Um site bonito, rápido e organizado faz essa decisão a seu favor.',
   destaques: ['confia', 'favor'],
@@ -175,15 +175,6 @@ export const MANIFESTO = {
     { valor: CASES.filter((c) => c.publicar).length, sufixo: '', texto: 'projetos reais em uso' },
     { valor: 10, sufixo: '', texto: 'dias úteis para o site ficar pronto' },
     { valor: 6, sufixo: 'x', texto: 'para pagar no Pix' },
-  ],
-  // lugar: posição em volta da frase (classes do Tailwind); velocidade: quanto sobe ao rolar; giro: inclinação.
-  cartoes: [
-    { src: '/cases/tivla.webp', alt: 'Tela do Tivla', lugar: 'left-[0%] top-[10%]', largura: 260, velocidade: 100, giro: -6 },
-    { src: '/cases/sigmq-1.webp', alt: 'Site da SIGMQ', lugar: 'right-[0%] top-[8%]', largura: 290, velocidade: 160, giro: 5 },
-    { src: '/cases/planilha-2.webp', alt: 'Painel do sistema de ordens de serviço', lugar: 'left-[3%] top-[50%]', largura: 230, velocidade: 200, giro: 4 },
-    { src: '/cases/fono-1.webp', alt: 'Site da Fátima Pessoa', lugar: 'right-[3%] top-[56%]', largura: 250, velocidade: 130, giro: -5 },
-    { src: '/cases/sigmq-4.webp', alt: 'Metodologia da SIGMQ', lugar: 'left-[12%] bottom-[3%]', largura: 160, velocidade: 220, giro: 7 },
-    { src: '/cases/planilha-4.webp', alt: 'Detalhe de uma ordem de serviço', lugar: 'right-[14%] top-[2%]', largura: 170, velocidade: 80, giro: -3 },
   ],
 };
 
