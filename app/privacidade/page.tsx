@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${PERFIL.site}/privacidade` },
 };
 
-const ATUALIZADA_EM = '9 de outubro de 2026';
+const ATUALIZADA_EM = '15 de outubro de 2026';
 
 function Secao({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
@@ -35,7 +35,8 @@ export default function Privacidade() {
 
         <p className="mt-8 leading-relaxed text-slate-700">
           Esta política explica, de forma simples, quais dados são tratados quando você visita o site{' '}
-          <strong>{PERFIL.site.replace('https://', '')}</strong> (incluindo o cartão digital) e quais são os seus direitos,
+          <strong>{PERFIL.site.replace('https://', '')}</strong> (incluindo o cartão digital) ou preenche um formulário dos meus
+          anúncios no Facebook ou no Instagram, e quais são os seus direitos,
           de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, a LGPD).
         </p>
 
@@ -49,6 +50,7 @@ export default function Privacidade() {
         <Secao titulo="2. Quais dados são tratados">
           <p><strong>Dados de navegação.</strong> Ao visitar o site, podem ser registradas informações como páginas visitadas, botões clicados, tipo de aparelho e navegador, endereço IP aproximado e data e hora do acesso.</p>
           <p><strong>Dados que você me envia.</strong> Se você me chamar no WhatsApp ou salvar o meu contato, as informações que você escolher compartilhar na conversa (como nome, telefone e a descrição do seu projeto) passam a ser tratadas por mim para responder você.</p>
+          <p><strong>Dados dos formulários dos anúncios.</strong> Se você preencher um formulário em um anúncio meu no Facebook ou no Instagram, recebo os dados que você enviar nele (como nome, telefone e as suas respostas). Uso esses dados só para entrar em contato com você, pelo WhatsApp ou por ligação, sobre o serviço que você pediu.</p>
           <p>O site não tem formulários de cadastro e não pede dados sensíveis.</p>
         </Secao>
 
