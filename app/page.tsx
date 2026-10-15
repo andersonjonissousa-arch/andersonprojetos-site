@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
+import BolinhasHero from './BolinhasHero';
 import ChatAtendente from './ChatAtendente';
 
 // Site profissional do Anderson: serviços, cases e contato. Conteúdo em /conteudo.ts.
@@ -61,6 +62,7 @@ export default function Home() {
         <section className="relative overflow-hidden bg-slate-950 pb-20 pt-32 sm:pt-40">
           <div className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -bottom-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-indigo-500/20 blur-3xl" aria-hidden="true" />
+          <BolinhasHero />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-teal-300 ring-1 ring-white/10">
               <span className="h-1.5 w-1.5 rounded-full bg-teal-400" aria-hidden="true" /> {PERFIL.regiao}
