@@ -1,9 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, PLANILHA_SISTEMA, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
+import { CASES, DUVIDAS, FERRAMENTAS, MANIFESTO, PASSOS, PERFIL, PLANILHA_SISTEMA, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
 import BolinhasHero from './BolinhasHero';
 import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
+import CartoesFlutuantes from './movimento/CartoesFlutuantes';
+import Contador from './movimento/Contador';
+import FraseRevelada from './movimento/FraseRevelada';
+import Surgir from './movimento/Surgir';
 
 // Site profissional do Anderson: serviços, cases e contato. Conteúdo em /conteudo.ts.
 
@@ -79,16 +83,16 @@ export default function Home() {
           <div className="pointer-events-none absolute -bottom-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-indigo-500/20 blur-3xl" aria-hidden="true" />
           <BolinhasHero />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-teal-300 ring-1 ring-white/10">
+            <p className="surgir inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-teal-300 ring-1 ring-white/10">
               <span className="h-1.5 w-1.5 rounded-full bg-teal-400" aria-hidden="true" /> {PERFIL.regiao}
             </p>
-            <h1 className="mt-6 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl">
+            <h1 className="surgir mt-6 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl" style={{ animationDelay: '0.08s' }}>
               Sites, sistemas e automações que <span className="text-teal-400">organizam a sua empresa</span> e economizam tempo.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+            <p className="surgir mt-6 max-w-2xl text-lg leading-relaxed text-slate-300" style={{ animationDelay: '0.16s' }}>
               Desenvolvo soluções sob medida para empresas de {PERFIL.cidade.split(' –')[0]} e região: do site que traz clientes ao sistema que tira o trabalho manual da rotina.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="surgir mt-9 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: '0.24s' }}>
               <a href={linkWhatsApp()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-teal-500 px-6 text-base font-bold text-slate-950 hover:bg-teal-400">
                 <IconeWhats /> Quero um orçamento
               </a>
@@ -96,7 +100,7 @@ export default function Home() {
                 Ver projetos <Seta />
               </a>
             </div>
-            <ul className="mt-14 flex flex-wrap gap-2" aria-label="Ferramentas que utilizo">
+            <ul className="surgir mt-14 flex flex-wrap gap-2" style={{ animationDelay: '0.32s' }} aria-label="Ferramentas que utilizo">
               {FERRAMENTAS.map(f => (
                 <li key={f} className="rounded-lg bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 ring-1 ring-white/10">{f}</li>
               ))}
@@ -104,14 +108,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FRASE DE IMPACTO E NÚMEROS */}
+        <section className="relative overflow-hidden bg-slate-950">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/10 blur-3xl" aria-hidden="true" />
+          <CartoesFlutuantes cartoes={MANIFESTO.cartoes} className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-40">
+            <div className="mx-auto max-w-3xl text-center lg:max-w-2xl">
+              <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl" />
+              <div className="mt-16 grid grid-cols-3 gap-4 border-t border-white/10 pt-10">
+                {MANIFESTO.numeros.map((n, i) => (
+                  <Surgir key={n.texto} atraso={i * 0.12}>
+                    <p className="text-4xl font-extrabold text-white sm:text-5xl"><Contador valor={n.valor} sufixo={n.sufixo} /></p>
+                    <p className="mt-2 text-xs leading-snug text-slate-400 sm:text-sm">{n.texto}</p>
+                  </Surgir>
+                ))}
+              </div>
+            </div>
+          </CartoesFlutuantes>
+        </section>
+
         {/* SERVIÇOS */}
         <section id="servicos" className="scroll-mt-4 bg-white">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-            <p className="text-sm font-bold uppercase tracking-wider text-teal-600">Serviços</p>
-            <h2 className="mt-2 max-w-2xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Tecnologia que resolve problemas do dia a dia da empresa</h2>
+            <Surgir>
+              <p className="text-sm font-bold uppercase tracking-wider text-teal-600">Serviços</p>
+              <h2 className="mt-2 max-w-2xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Tecnologia que resolve problemas do dia a dia da empresa</h2>
+            </Surgir>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {SERVICOS.map(s => (
-                <article key={s.id} className="flex flex-col rounded-2xl p-6 ring-1 ring-slate-200 transition-shadow hover:shadow-lg">
+              {SERVICOS.map((s, i) => (
+                <Surgir como="article" key={s.id} atraso={i * 0.06} className="flex flex-col rounded-2xl p-6 ring-1 ring-slate-200 transition-shadow hover:shadow-lg">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">{ICONES[s.id]}</svg>
                   </span>
@@ -120,13 +144,15 @@ export default function Home() {
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {s.exemplos.map(e => <li key={e} className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600">{e}</li>)}
                   </ul>
-                </article>
+                </Surgir>
               ))}
-              <a href={linkWhatsApp('Olá, Anderson! Tenho uma ideia de projeto e queria saber se você consegue fazer.')} target="_blank" rel="noopener noreferrer" className="flex flex-col justify-center rounded-2xl bg-slate-950 p-6 text-white hover:bg-slate-900">
+              <Surgir atraso={0.3} className="flex">
+              <a href={linkWhatsApp('Olá, Anderson! Tenho uma ideia de projeto e queria saber se você consegue fazer.')} target="_blank" rel="noopener noreferrer" className="flex w-full flex-col justify-center rounded-2xl bg-slate-950 p-6 text-white hover:bg-slate-900">
                 <p className="text-lg font-bold">Tem outra ideia?</p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-300">Se o problema da sua empresa pode ser resolvido com tecnologia, vamos conversar.</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-400">Falar no WhatsApp <Seta /></span>
               </a>
+              </Surgir>
             </div>
           </div>
         </section>
@@ -134,7 +160,7 @@ export default function Home() {
         {/* DA PLANILHA AO SISTEMA */}
         <section id="planilha" className="scroll-mt-4 bg-slate-950">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2">
-            <div>
+            <Surgir>
               <p className="text-sm font-bold uppercase tracking-wider text-teal-400">Da planilha ao sistema</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">{PLANILHA_SISTEMA.titulo}</h2>
               <p className="mt-4 leading-relaxed text-slate-300">{PLANILHA_SISTEMA.texto}</p>
@@ -152,21 +178,25 @@ export default function Home() {
                   <IconeWhats /> Quero organizar a minha
                 </a>
               </div>
-            </div>
-            <JanelaNavegador endereco="andersonprojetos.com.br/demonstracao">
-              <CarrosselTelas nome="Da planilha ao sistema" telas={PLANILHA_SISTEMA.telas} />
-            </JanelaNavegador>
+            </Surgir>
+            <Surgir atraso={0.15}>
+              <JanelaNavegador endereco="andersonprojetos.com.br/demonstracao">
+                <CarrosselTelas nome="Da planilha ao sistema" telas={PLANILHA_SISTEMA.telas} />
+              </JanelaNavegador>
+            </Surgir>
           </div>
         </section>
 
         {/* CASES */}
         <section id="cases" className="scroll-mt-4 bg-slate-50">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-            <p className="text-sm font-bold uppercase tracking-wider text-teal-600">Projetos</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Projetos reais, em uso</h2>
+            <Surgir>
+              <p className="text-sm font-bold uppercase tracking-wider text-teal-600">Projetos</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Projetos reais, em uso</h2>
+            </Surgir>
             <div className="mt-12 space-y-8">
               {cases.map(c => (
-                <article key={c.id} className="grid overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 lg:grid-cols-2">
+                <Surgir como="article" key={c.id} className="grid overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 lg:grid-cols-2">
                   <div className="flex items-center bg-gradient-to-br from-slate-900 to-slate-800 p-5 sm:p-8">
                     {c.imagem || c.telas?.length ? (
                       <JanelaNavegador endereco={c.link?.replace('https://', '')}>
@@ -206,7 +236,7 @@ export default function Home() {
                       )}
                     </div>
                   </div>
-                </article>
+                </Surgir>
               ))}
             </div>
           </div>
@@ -215,15 +245,17 @@ export default function Home() {
         {/* COMO TRABALHO */}
         <section id="como-trabalho" className="scroll-mt-4 bg-white">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-            <p className="text-sm font-bold uppercase tracking-wider text-teal-600">Como trabalho</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Do primeiro contato à entrega, sem complicação</h2>
+            <Surgir>
+              <p className="text-sm font-bold uppercase tracking-wider text-teal-600">Como trabalho</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Do primeiro contato à entrega, sem complicação</h2>
+            </Surgir>
             <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {PASSOS.map((p, i) => (
-                <li key={p.titulo} className="rounded-2xl bg-slate-50 p-6">
+                <Surgir como="li" key={p.titulo} atraso={i * 0.08} className="rounded-2xl bg-slate-50 p-6">
                   <span className="text-sm font-bold text-teal-600">0{i + 1}</span>
                   <p className="mt-2 text-lg font-bold text-slate-900">{p.titulo}</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.texto}</p>
-                </li>
+                </Surgir>
               ))}
             </ol>
           </div>
@@ -232,26 +264,30 @@ export default function Home() {
         {/* SOBRE */}
         <section id="sobre" className="scroll-mt-4 bg-slate-950">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-[auto_1fr]">
+            <Surgir>
             {SOBRE.foto ? (
               <Image src={SOBRE.foto} alt={PERFIL.nome} width={320} height={400} sizes="(min-width: 640px) 320px, 256px" className="mx-auto h-80 w-64 rounded-3xl object-cover ring-4 ring-teal-500/30 sm:h-[400px] sm:w-80" />
             ) : (
               <div className="mx-auto flex h-48 w-48 items-center justify-center rounded-3xl bg-gradient-to-br from-teal-500 to-indigo-500 text-6xl font-extrabold text-white sm:h-56 sm:w-56" aria-hidden="true">{iniciais}</div>
             )}
-            <div>
+            </Surgir>
+            <Surgir atraso={0.12}>
               <p className="text-sm font-bold uppercase tracking-wider text-teal-400">Sobre mim</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight text-white">{PERFIL.nome}</h2>
               <div className="mt-5 space-y-4 leading-relaxed text-slate-300">
                 {SOBRE.paragrafos.map(p => <p key={p}>{p}</p>)}
               </div>
-            </div>
+            </Surgir>
           </div>
         </section>
 
         {/* DÚVIDAS */}
         <section className="bg-white">
           <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">Dúvidas frequentes</h2>
-            <div className="mt-10 divide-y divide-slate-100 rounded-2xl ring-1 ring-slate-200">
+            <Surgir>
+              <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">Dúvidas frequentes</h2>
+            </Surgir>
+            <Surgir atraso={0.1} className="mt-10 divide-y divide-slate-100 rounded-2xl ring-1 ring-slate-200">
               {DUVIDAS.map(d => (
                 <details key={d.p} className="group px-5 py-4 sm:px-6">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-slate-900">
@@ -261,18 +297,20 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-relaxed text-slate-600">{d.r}</p>
                 </details>
               ))}
-            </div>
+            </Surgir>
           </div>
         </section>
 
         {/* CHAMADA FINAL */}
         <section className="bg-teal-500">
           <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+            <Surgir>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Vamos tirar sua ideia do papel?</h2>
             <p className="mx-auto mt-4 max-w-2xl text-slate-900/80">Me conte o que sua empresa precisa. A primeira conversa e o orçamento são sem compromisso.</p>
             <a href={linkWhatsApp()} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-slate-950 px-7 text-base font-bold text-white hover:bg-slate-800">
               <IconeWhats /> Chamar no WhatsApp
             </a>
+            </Surgir>
           </div>
         </section>
       </main>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import { META_PIXEL_ID, PERFIL } from '@/conteudo';
 import PixelMeta from './PixelMeta';
+import ProvedorMovimento from './movimento/ProvedorMovimento';
 import './globals.css';
 
 const geist = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
@@ -20,7 +21,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR">
       <body className={`${geist.variable} font-sans antialiased`}>
-        {children}
+        <ProvedorMovimento>{children}</ProvedorMovimento>
+        {/* Sem JavaScript, mostra tudo o que entraria com animação. */}
+        <noscript>
+          <style>{'[style*="opacity:0"]{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
         {META_PIXEL_ID && <PixelMeta id={META_PIXEL_ID} />}
       </body>
     </html>
