@@ -128,7 +128,14 @@ export const CASES: Case[] = [
     solucao: 'Site com as áreas de atendimento para crianças e adultos explicadas em linguagem simples, um guia de sinais para saber quando procurar uma fonoaudióloga, uma seção sobre cirurgia com o paciente acordado, formação, cursos, dúvidas frequentes e agendamento direto pelo WhatsApp.',
     resultados: ['Especialidade explicada em linguagem simples', 'Guia de sinais para crianças e adultos', 'Agendamento direto pelo WhatsApp'],
     ferramentas: ['Astro', 'Netlify', 'WhatsApp'],
-    imagem: '/cases/fono.webp',
+    telas: [
+      { src: '/cases/fono-1.webp', legenda: 'Página inicial' },
+      { src: '/cases/fono-2.webp', legenda: 'Áreas de atendimento para crianças e adultos' },
+      { src: '/cases/fono-3.webp', legenda: 'Guia de sinais: quando procurar uma fono' },
+      { src: '/cases/fono-4.webp', legenda: 'Cirurgia com o paciente acordado' },
+      { src: '/cases/fono-5.webp', legenda: 'Formação e experiência' },
+      { src: '/cases/fono-6.webp', legenda: 'Cursos e mentoria para profissionais' },
+    ],
     link: 'https://fonofatimapessoa.com.br',
   },
 ];
