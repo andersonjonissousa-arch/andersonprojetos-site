@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CASES, DUVIDAS, FERRAMENTAS, PASSOS, PERFIL, SERVICOS, SOBRE, linkWhatsApp } from '@/conteudo';
+import ChatAtendente from './ChatAtendente';
 
 // Site profissional do Anderson: serviços, cases e contato. Conteúdo em /conteudo.ts.
 
@@ -245,6 +246,8 @@ export default function Home() {
           <p>© {new Date().getFullYear()} {PERFIL.marca}</p>
         </div>
       </footer>
+
+      <ChatAtendente />
 
       <a href={linkWhatsApp()} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-xl hover:bg-[#1ebe5b]">
         <IconeWhats className="h-7 w-7" />
