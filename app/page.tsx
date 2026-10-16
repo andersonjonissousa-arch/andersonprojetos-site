@@ -4,7 +4,6 @@ import { CASES, DUVIDAS, FERRAMENTAS, MANIFESTO, PASSOS, PERFIL, PLANILHA_SISTEM
 import BolinhasHero from './BolinhasHero';
 import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
-import CartoesFlutuantes from './movimento/CartoesFlutuantes';
 import Contador from './movimento/Contador';
 import FraseRevelada from './movimento/FraseRevelada';
 import Surgir from './movimento/Surgir';
@@ -111,7 +110,7 @@ export default function Home() {
         {/* FRASE DE IMPACTO E NÚMEROS */}
         <section className="relative overflow-hidden bg-slate-950">
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/10 blur-3xl" aria-hidden="true" />
-          <CartoesFlutuantes cartoes={MANIFESTO.cartoes} className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-40">
+          <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
             <div className="mx-auto max-w-3xl text-center lg:max-w-2xl">
               <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl" />
               <div className="mt-16 grid grid-cols-3 gap-4 border-t border-white/10 pt-10">
@@ -123,7 +122,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </CartoesFlutuantes>
+          </div>
         </section>
 
         {/* SERVIÇOS */}
