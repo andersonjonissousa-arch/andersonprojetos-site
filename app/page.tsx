@@ -6,6 +6,7 @@ import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
 import Contador from './movimento/Contador';
 import FraseRevelada from './movimento/FraseRevelada';
+import OndaDeLuz from './movimento/OndaDeLuz';
 import Surgir from './movimento/Surgir';
 
 // Site profissional do Anderson: serviços, cases e contato. Conteúdo em /conteudo.ts.
@@ -80,6 +81,7 @@ export default function Home() {
         <section className="relative overflow-hidden bg-slate-950 pb-20 pt-32 sm:pt-40">
           <div className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -bottom-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-indigo-500/20 blur-3xl" aria-hidden="true" />
+          <OndaDeLuz />
           <BolinhasHero />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <p className="surgir inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-teal-300 ring-1 ring-white/10">
@@ -110,17 +112,16 @@ export default function Home() {
         {/* FRASE DE IMPACTO E NÚMEROS */}
         <section className="relative overflow-hidden bg-slate-950">
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/10 blur-3xl" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_115%,rgba(45,212,191,0.22),transparent_60%)]" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
-            <div className="mx-auto max-w-3xl text-center lg:max-w-2xl">
-              <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl" />
-              <div className="mt-16 grid grid-cols-3 gap-4 border-t border-white/10 pt-10">
-                {MANIFESTO.numeros.map((n, i) => (
-                  <Surgir key={n.texto} atraso={i * 0.12}>
-                    <p className="text-4xl font-extrabold text-white sm:text-5xl"><Contador valor={n.valor} sufixo={n.sufixo} /></p>
-                    <p className="mt-2 text-xs leading-snug text-slate-400 sm:text-sm">{n.texto}</p>
-                  </Surgir>
-                ))}
-              </div>
+            <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="mx-auto max-w-3xl text-center text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:max-w-2xl lg:text-5xl" />
+            <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/10 pt-10 text-center lg:max-w-2xl">
+              {MANIFESTO.numeros.map((n, i) => (
+                <Surgir key={n.texto} atraso={i * 0.12}>
+                  <p className="text-4xl font-extrabold text-white sm:text-5xl"><Contador valor={n.valor} sufixo={n.sufixo} /></p>
+                  <p className="mt-2 text-xs leading-snug text-slate-400 sm:text-sm">{n.texto}</p>
+                </Surgir>
+              ))}
             </div>
           </div>
         </section>
