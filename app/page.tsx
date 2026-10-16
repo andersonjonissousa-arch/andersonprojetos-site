@@ -4,7 +4,6 @@ import { CASES, DUVIDAS, FERRAMENTAS, MANIFESTO, PASSOS, PERFIL, PLANILHA_SISTEM
 import BolinhasHero from './BolinhasHero';
 import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
-import CartoesGirando from './movimento/CartoesGirando';
 import Contador from './movimento/Contador';
 import FraseRevelada from './movimento/FraseRevelada';
 import OndaDeLuz from './movimento/OndaDeLuz';
@@ -114,12 +113,9 @@ export default function Home() {
         <section className="relative overflow-hidden bg-slate-950">
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/10 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_115%,rgba(45,212,191,0.22),transparent_60%)]" aria-hidden="true" />
-          <div className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:pb-28">
-            {/* A roda de cartões fica só em volta da frase; os números vêm logo abaixo. */}
-            <CartoesGirando className="pt-20 lg:py-48">
-              <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="mx-auto max-w-3xl text-center text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:max-w-2xl lg:text-5xl" />
-            </CartoesGirando>
-            <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/10 pt-10 text-center lg:mt-0 lg:max-w-2xl">
+          <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
+            <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="mx-auto max-w-3xl text-center text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:max-w-2xl lg:text-5xl" />
+            <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/10 pt-10 text-center lg:max-w-2xl">
               {MANIFESTO.numeros.map((n, i) => (
                 <Surgir key={n.texto} atraso={i * 0.12}>
                   <p className="text-4xl font-extrabold text-white sm:text-5xl"><Contador valor={n.valor} sufixo={n.sufixo} /></p>
