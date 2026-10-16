@@ -20,10 +20,11 @@ const FASES = {
   numeros: [0.84, 0.94], // os números aparecem
 };
 
-// Raio da roda (fração da largura/altura da tela), no começo e no fim da rolagem.
+// Raio da roda (fração da largura/altura da tela): no começo, no fim da leitura e no fim da saída.
+// Durante a leitura a roda quase não abre (atenção no texto); o zoom forte fica para a saída.
 const RODA = {
-  largo: { x: [0.4, 0.62], y: [0.42, 0.62] },
-  estreito: { x: [0.62, 0.8], y: [0.4, 0.55] }, // celular: cartões dos lados ficam quase fora da tela
+  largo: { x: [0.4, 0.45, 0.78], y: [0.42, 0.47, 0.78] },
+  estreito: { x: [0.62, 0.65, 0.95], y: [0.4, 0.43, 0.72] }, // celular: cartões dos lados ficam quase fora da tela
 };
 
 // Preferências do aparelho lidas sem atrapalhar a montagem da página.
@@ -46,13 +47,17 @@ function CartaoNaRoda({ f, i, roda, progresso, tempo, largura, altura }: {
 }) {
   const base = (i / FERRAMENTAS_CARTOES.length) * Math.PI * 2;
   const giroProprio = [-18, 14, -10, 22, -24, 12, -14, 20][i % 8];
-  const entre = (de: number, ate: number, p: number) => de + (ate - de) * Math.min(1, Math.max(0, p));
+  // Raio em três pontos: devagar até o fim da leitura, rápido na saída.
+  const [saiInicio, saiFim] = FASES.saida;
+  const raio = ([r0, r1, r2]: number[], p: number) =>
+    p < saiInicio ? r0 + (r1 - r0) * Math.max(0, p / saiInicio) : r1 + (r2 - r1) * Math.min(1, (p - saiInicio) / (saiFim - saiInicio));
   // Ângulo na roda: gira sozinho com o tempo (uma volta a cada ~100 s) e um pouco mais ao rolar.
-  const angulo = useTransform([tempo, progresso], ([t, p]: number[]) => base + t * 0.00006 + p * 0.9);
-  const x = useTransform([angulo, progresso, largura], ([a, p, w]: number[]) => Math.cos(a) * entre(roda.x[0], roda.x[1], p) * w);
-  const y = useTransform([angulo, progresso, altura], ([a, p, h]: number[]) => Math.sin(a) * entre(roda.y[0], roda.y[1], p) * h);
-  const rotate = useTransform([tempo, progresso], ([t, p]: number[]) => giroProprio + Math.sin(t * 0.0004 + i) * 6 + p * 40);
-  const scale = useTransform(progresso, [0, 0.8, 0.92], [0.9, 1.35, 1.9]);
+  const angulo = useTransform([tempo, progresso], ([t, p]: number[]) => base + t * 0.00006 + p * 0.4);
+  const x = useTransform([angulo, progresso, largura], ([a, p, w]: number[]) => Math.cos(a) * raio(roda.x, p) * w);
+  const y = useTransform([angulo, progresso, altura], ([a, p, h]: number[]) => Math.sin(a) * raio(roda.y, p) * h);
+  const rotate = useTransform([tempo, progresso], ([t, p]: number[]) => giroProprio + Math.sin(t * 0.0004 + i) * 6 + p * 20);
+  // Tamanho: quase igual durante a leitura; cresce forte só na saída (os cartões "vêm para perto").
+  const scale = useTransform(progresso, [0, saiInicio, saiFim], [0.95, 1.08, 2.3]);
   const opacity = useTransform(progresso, [0.02, 0.18, FASES.saida[0], FASES.saida[1]], [0, 1, 1, 0]);
   const filter = useTransform(progresso, FASES.saida, ['blur(0px)', 'blur(14px)']);
   return (
