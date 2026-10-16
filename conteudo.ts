@@ -167,10 +167,10 @@ export const DUVIDAS = [
   { p: 'Preciso entender de tecnologia?', r: 'Não. Eu explico tudo de forma simples e ensino sua equipe a usar.' },
 ];
 
-// Faixa de impacto depois da primeira tela: frase que acende ao rolar e números.
+// Faixa de impacto depois da primeira tela: frases que aparecem ao rolar (com os cartões das ferramentas) e números.
 export const MANIFESTO = {
-  frase: 'Seu cliente decide em poucos segundos se confia na sua empresa. Um site bonito, rápido e organizado faz essa decisão a seu favor.',
-  destaques: ['confia', 'favor'],
+  // Cada item é uma linha que aparece ao rolar; o que está entre *asteriscos* fica em destaque.
+  linhas: ['Seu cliente decide em poucos segundos', 'se *confia* na sua empresa.', 'Um site bonito, rápido e organizado', 'faz essa decisão *a seu favor*.'],
   numeros: [
     { valor: CASES.filter((c) => c.publicar).length, sufixo: '', texto: 'projetos reais em uso' },
     { valor: 10, sufixo: '', texto: 'dias úteis para o site ficar pronto' },
