@@ -4,8 +4,7 @@ import { CASES, DUVIDAS, FERRAMENTAS, MANIFESTO, PASSOS, PERFIL, PLANILHA_SISTEM
 import BolinhasHero from './BolinhasHero';
 import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
-import Contador from './movimento/Contador';
-import FraseRevelada from './movimento/FraseRevelada';
+import CenaFerramentas from './movimento/CenaFerramentas';
 import OndaDeLuz from './movimento/OndaDeLuz';
 import Surgir from './movimento/Surgir';
 
@@ -109,21 +108,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FRASE DE IMPACTO E NÚMEROS */}
-        <section className="relative overflow-hidden bg-slate-950">
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/10 blur-3xl" aria-hidden="true" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_115%,rgba(45,212,191,0.22),transparent_60%)]" aria-hidden="true" />
-          <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
-            <FraseRevelada frase={MANIFESTO.frase} destaques={MANIFESTO.destaques} className="mx-auto max-w-3xl text-center text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:max-w-2xl lg:text-5xl" />
-            <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/10 pt-10 text-center lg:max-w-2xl">
-              {MANIFESTO.numeros.map((n, i) => (
-                <Surgir key={n.texto} atraso={i * 0.12}>
-                  <p className="text-4xl font-extrabold text-white sm:text-5xl"><Contador valor={n.valor} sufixo={n.sufixo} /></p>
-                  <p className="mt-2 text-xs leading-snug text-slate-400 sm:text-sm">{n.texto}</p>
-                </Surgir>
-              ))}
-            </div>
-          </div>
+        {/* FERRAMENTAS: RODA DE CARTÕES, PALAVRAS QUE APARECEM AO ROLAR E, NO FIM, OS NÚMEROS */}
+        {/* overflow-x-clip (e não overflow-hidden) para a cena poder ficar presa na tela */}
+        <section className="relative overflow-x-clip bg-slate-950">
+          <CenaFerramentas linhas={MANIFESTO.linhas} numeros={MANIFESTO.numeros} />
         </section>
 
         {/* SERVIÇOS */}
