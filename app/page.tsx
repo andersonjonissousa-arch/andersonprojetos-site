@@ -5,7 +5,6 @@ import BolinhasHero from './BolinhasHero';
 import CarrosselTelas from './CarrosselTelas';
 import ChatAtendente from './ChatAtendente';
 import CenaFerramentas from './movimento/CenaFerramentas';
-import Contador from './movimento/Contador';
 import OndaDeLuz from './movimento/OndaDeLuz';
 import Surgir from './movimento/Surgir';
 
@@ -109,20 +108,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FERRAMENTAS: OS CARTÕES CRESCEM E AS FRASES APARECEM AO ROLAR; DEPOIS, OS NÚMEROS */}
+        {/* FERRAMENTAS: RODA DE CARTÕES, PALAVRAS QUE APARECEM AO ROLAR E, NO FIM, OS NÚMEROS */}
         {/* overflow-x-clip (e não overflow-hidden) para a cena poder ficar presa na tela */}
         <section className="relative overflow-x-clip bg-slate-950">
-          <CenaFerramentas linhas={MANIFESTO.linhas} />
-          <div className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6">
-            <div className="mx-auto grid max-w-3xl grid-cols-3 gap-4 border-t border-white/10 pt-10 text-center lg:max-w-2xl">
-              {MANIFESTO.numeros.map((n, i) => (
-                <Surgir key={n.texto} atraso={i * 0.12}>
-                  <p className="text-4xl font-extrabold text-white sm:text-5xl"><Contador valor={n.valor} sufixo={n.sufixo} /></p>
-                  <p className="mt-2 text-xs leading-snug text-slate-400 sm:text-sm">{n.texto}</p>
-                </Surgir>
-              ))}
-            </div>
-          </div>
+          <CenaFerramentas linhas={MANIFESTO.linhas} numeros={MANIFESTO.numeros} />
         </section>
 
         {/* SERVIÇOS */}
