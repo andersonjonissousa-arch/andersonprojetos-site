@@ -2,7 +2,10 @@
 // Roda na Cloudflare Pages (Pages Functions). A chave da Anthropic fica guardada como
 // segredo na Cloudflare (ANTHROPIC_API_KEY) e nunca vai para o navegador.
 import Anthropic from '@anthropic-ai/sdk';
-import { ATENDENTE, CASES, DUVIDAS, PASSOS, PERFIL, PLANILHA_SISTEMA, SERVICOS } from '../../conteudo';
+import {
+  ATENDENTE, CASES, DUVIDAS, PALETAS_URL, PASSOS, PERFIL, PLANILHA_SISTEMA, PLANOS, PLANOS_COMPARATIVO, PLANOS_DUVIDAS,
+  PLANOS_TODOS_INCLUEM, SERVICOS,
+} from '../../conteudo';
 
 interface Env {
   ANTHROPIC_API_KEY?: string;
@@ -31,7 +34,12 @@ const INSTRUCOES = (() => {
     .map((c) => `- ${c.nome} (${c.tipo}): ${c.resumo}${c.link ? ` Link: ${c.link}` : ''}`)
     .join('\n');
   const passos = PASSOS.map((p, i) => `${i + 1}. ${p.titulo}: ${p.texto}`).join('\n');
-  const duvidas = DUVIDAS.map((d) => `Pergunta: ${d.p}\nResposta: ${d.r}`).join('\n\n');
+  const duvidas = [...DUVIDAS, ...PLANOS_DUVIDAS].map((d) => `Pergunta: ${d.p}\nResposta: ${d.r}`).join('\n\n');
+  const nomePlano = Object.fromEntries(PLANOS.map((p) => [p.id, p.nome]));
+  const planos = PLANOS.map(
+    (p) => `- Plano ${p.nome}: ${p.construcao} de criação + ${p.mensal} por mês. ${p.chamada}. ${p.paraQuem} Inclui: ${p.inclui.join('; ')}. Exemplo de site neste plano: ${p.exemplo}`,
+  ).join('\n');
+  const recursos = PLANOS_COMPARATIVO.flatMap((g) => g.itens.map((i) => `- ${i.nome}: a partir do ${nomePlano[i.desde]}`)).join('\n');
 
   return `Você é o atendente virtual da ${PERFIL.marca}, de ${PERFIL.nome}, em ${PERFIL.cidade}. Você conversa com visitantes do site ${PERFIL.site}, que podem ser donos de pequenos negócios ou profissionais autônomos interessados em um site, sistema ou automação.
 
@@ -43,7 +51,13 @@ ${servicos}
 
 Da planilha ao sistema: ${PLANILHA_SISTEMA.texto} Serve para ${PLANILHA_SISTEMA.exemplos}. ${PLANILHA_SISTEMA.excel} Tem uma demonstração para testar à vontade, com dados fictícios (um sistema de ordens de serviço): ${PERFIL.site}/demonstracao
 
-Preço do site profissional: ${ATENDENTE.oferta}
+Sites: 3 planos com preço fechado. Página com tudo: ${PERFIL.site}/planos
+${planos}
+Todos os planos incluem: ${PLANOS_TODOS_INCLUEM.join('; ')}.
+Pagamento: ${ATENDENTE.pagamento}
+Em qual plano entra cada recurso (o plano citado e os de cima):
+${recursos}
+Para escolher cores, fonte e cantos e ver como fica: ${PALETAS_URL}
 Sistemas, apps, automações e dashboards não têm preço fixo: o Anderson conversa com a pessoa e manda uma proposta por escrito com prazo e valor, sem compromisso.
 
 Projetos já feitos:
@@ -65,11 +79,13 @@ Como atender:
 - Escreva em texto simples, sem Markdown (sem asteriscos, títulos ou listas com marcadores). Links podem ir como endereço completo.
 - Use só as informações de <negocio>. Se a pessoa perguntar algo que não está ali (outra forma de pagamento, prazo de sistemas e automações, desconto, um tipo de projeto diferente), diga que o Anderson confirma isso na conversa e ofereça anotar o contato ou mandar o link do WhatsApp. Nunca invente preço, prazo, desconto ou garantia, e não prometa resultados como "primeiro lugar no Google".
 - Se perguntarem se você é uma pessoa, diga que é um atendente virtual com inteligência artificial e que o Anderson responde pessoalmente pelo WhatsApp.
+- Quando perguntarem o preço de um site, apresente os 3 planos em poucas palavras (nome e valores) e mande o link ${PERFIL.site}/planos. Se a pessoa contar o tipo de negócio, indique o plano que faz mais sentido sem empurrar o mais caro.
+- Se a pessoa quiser um efeito ou função específica, diga a partir de qual plano ele entra e quanto sai esse plano.
 - Fale apenas sobre os serviços da ${PERFIL.marca}. Se a conversa for para outro assunto, responda com gentileza que você só ajuda com isso e traga de volta.
 - Não peça dados sensíveis (CPF, documentos, senhas, dados de cartão ou de saúde). Se a pessoa mandar, não repita.
 
 Anotar o contato:
-- Quando a pessoa quiser orçamento, quiser contratar ou pedir para o Anderson chamar, peça o nome e o WhatsApp com DDD, se ela ainda não tiver informado. Se fizer sentido, pergunte também o tipo de negócio.
+- Quando a pessoa quiser orçamento, quiser contratar ou pedir para o Anderson chamar, peça o nome e o WhatsApp com DDD, se ela ainda não tiver informado. Se fizer sentido, pergunte também o tipo de negócio. No resumo do interesse, inclua o plano que a pessoa escolheu, se escolheu.
 - Com nome e WhatsApp em mãos, use a ferramenta registrar_contato uma única vez, e depois confirme que o Anderson vai chamar pelo WhatsApp.
 - Se a pessoa preferir chamar direto, mande o link do WhatsApp.`;
 })();
