@@ -214,3 +214,167 @@ export const ATENDENTE = {
   saudacao: 'Olá! Sou o atendente virtual da Anderson Projetos. Posso tirar suas dúvidas sobre sites, sistemas e automações. Como posso ajudar?',
   sugestoes: ['Quanto custa um site?', 'Quais projetos você já fez?', 'Como funciona o processo?'],
 };
+
+// Planos de site (página /planos). Mesmos preços e recursos da plataforma de sites
+// (template-padrao-ouro: src/lib/planos.ts e docs/planos.md); mude lá e aqui juntos.
+export type PlanoId = 'basico' | 'medio' | 'avancado';
+
+export type Plano = {
+  id: PlanoId;
+  nome: string;
+  chamada: string;
+  paraQuem: string;
+  construcao: string;   // valor da criação
+  mensal: string;       // valor por mês
+  destaque?: boolean;   // cartão em evidência ("mais escolhido")
+  exemplo: string;      // site de exemplo neste plano
+  inclui: string[];     // o que aparece no cartão do plano
+};
+
+const EXEMPLO = 'https://template-padrao-ouro.vercel.app/sites/modelo-solar';
+
+export const PLANOS: Plano[] = [
+  {
+    id: 'basico',
+    nome: 'Básico',
+    chamada: 'Presença profissional, rápida e no seu WhatsApp',
+    paraQuem: 'Para quem está começando ou só precisa ser encontrado e chamado no WhatsApp.',
+    construcao: 'R$ 300',
+    mensal: 'R$ 60',
+    exemplo: `${EXEMPLO}-basico`,
+    inclui: [
+      '1 página com até 8 seções + cartão digital',
+      '4 estilos visuais e paleta de cores pronta',
+      'Seções que aparecem suavemente ao rolar',
+      'Galeria de fotos, depoimentos e dúvidas',
+      'Botões de WhatsApp com mensagem pronta e mapa',
+      'Preparado para o Google',
+      '1 ajuste de texto ou foto por mês',
+    ],
+  },
+  {
+    id: 'medio',
+    nome: 'Médio',
+    chamada: 'Visual de agência, com movimento e prova social',
+    paraQuem: 'Para quem quer passar confiança, mostrar o trabalho e receber pedidos de orçamento.',
+    construcao: 'R$ 500',
+    mensal: 'R$ 80',
+    destaque: true,
+    exemplo: `${EXEMPLO}-medio`,
+    inclui: [
+      'Até 3 páginas com até 14 seções cada',
+      '6 estilos, fundo escuro e escolha da fonte',
+      'Títulos que entram palavra por palavra',
+      'Fotos ou vídeo passando no topo',
+      'Depoimentos em movimento e galeria em mosaico',
+      'Números, nota do Google, preços ou cardápio',
+      'Formulário com aviso por e-mail',
+      'Até 3 ajustes por mês',
+    ],
+  },
+  {
+    id: 'avancado',
+    nome: 'Avançado',
+    chamada: 'Efeito "uau": animações que contam a sua história',
+    paraQuem: 'Para negócios de alto valor e quem anuncia: o site precisa impressionar e medir resultado.',
+    construcao: 'R$ 1.000 a R$ 1.500',
+    mensal: 'R$ 100 a R$ 150',
+    exemplo: `${EXEMPLO}-avancado`,
+    inclui: [
+      'Até 6 páginas, seções sem limite',
+      'Animação que toca conforme a pessoa rola',
+      'Vídeo de fundo no topo',
+      'Simulador, calculadora ou pedido com carrinho',
+      'Pixel da Meta, Google Analytics e Google Ads',
+      'Vídeo do site rolando para Reels e Status',
+      'Cores e fontes sob medida para a marca',
+      'Ajustes sem limite fixo, com prioridade',
+    ],
+  },
+];
+
+// Todos os planos incluem.
+export const PLANOS_TODOS_INCLUEM = [
+  'Domínio próprio (o registro .com.br é pago à parte, cerca de R$ 40 por ano)',
+  'Hospedagem, cadeado de segurança (HTTPS) e atualizações',
+  'Funciona no celular, no tablet e no computador',
+  'Cartão digital com QR Code',
+];
+
+// Comparativo: em qual plano cada recurso aparece (o plano listado e os de cima).
+export const PLANOS_COMPARATIVO: { grupo: string; itens: { nome: string; desde: PlanoId }[] }[] = [
+  {
+    grupo: 'Tamanho',
+    itens: [
+      { nome: 'Cartão digital com QR Code', desde: 'basico' },
+      { nome: 'Até 3 páginas', desde: 'medio' },
+      { nome: 'Até 6 páginas e seções sem limite', desde: 'avancado' },
+    ],
+  },
+  {
+    grupo: 'Visual',
+    itens: [
+      { nome: 'Estilos Clássico, Acolhedor, Elegante e Moderno', desde: 'basico' },
+      { nome: 'Paleta de cores pronta ou as cores da sua logo', desde: 'basico' },
+      { nome: 'Estilos Editorial e Técnico', desde: 'medio' },
+      { nome: 'Fundo escuro, escolha da fonte e do formato dos cantos', desde: 'medio' },
+      { nome: 'Cores e fontes criadas para a sua marca', desde: 'avancado' },
+    ],
+  },
+  {
+    grupo: 'Efeitos e movimento',
+    itens: [
+      { nome: 'Seções que aparecem suavemente ao rolar', desde: 'basico' },
+      { nome: 'Títulos palavra por palavra e fotos que se abrem', desde: 'medio' },
+      { nome: 'Fotos passando no topo ou vídeo com botão ▶', desde: 'medio' },
+      { nome: 'Foto em tela cheia com profundidade', desde: 'medio' },
+      { nome: 'Faixa de texto correndo', desde: 'medio' },
+      { nome: 'Depoimentos em movimento e galeria em mosaico', desde: 'medio' },
+      { nome: 'Antes e depois de arrastar', desde: 'medio' },
+      { nome: 'Animação que conta a história conforme a rolagem', desde: 'avancado' },
+      { nome: 'Vídeo de fundo no topo', desde: 'avancado' },
+      { nome: 'Objeto em movimento e painéis que se empilham', desde: 'avancado' },
+    ],
+  },
+  {
+    grupo: 'Seções',
+    itens: [
+      { nome: 'Sobre, serviços, como funciona, depoimentos e dúvidas', desde: 'basico' },
+      { nome: 'Galeria de fotos', desde: 'basico' },
+      { nome: 'Números em destaque e nota do Google', desde: 'medio' },
+      { nome: 'Selo de garantia e lista "você se identifica?"', desde: 'medio' },
+      { nome: 'Tabela de preços, vitrine de produtos ou cardápio', desde: 'medio' },
+    ],
+  },
+  {
+    grupo: 'Funções',
+    itens: [
+      { nome: 'WhatsApp com mensagem pronta, botão flutuante e mapa', desde: 'basico' },
+      { nome: 'Formulário com contato salvo e aviso por e-mail', desde: 'medio' },
+      { nome: 'Selo "Aberto agora" e barra fixa de botões no celular', desde: 'medio' },
+      { nome: 'Simulador ou calculadora', desde: 'avancado' },
+      { nome: 'Pedido pelo WhatsApp com carrinho e planos de assinatura', desde: 'avancado' },
+      { nome: 'Pixel da Meta, Google Analytics, Google Ads e Tag Manager', desde: 'avancado' },
+    ],
+  },
+  {
+    grupo: 'Suporte',
+    itens: [
+      { nome: '1 ajuste por mês', desde: 'basico' },
+      { nome: 'Até 3 ajustes por mês', desde: 'medio' },
+      { nome: 'Ajustes sem limite fixo e prioridade', desde: 'avancado' },
+      { nome: 'Vídeo do site rolando para Reels e Status', desde: 'avancado' },
+    ],
+  },
+];
+
+// Página para o cliente escolher cores, fonte e cantos (fica na plataforma de sites).
+export const PALETAS_URL = 'https://template-padrao-ouro.vercel.app/paletas';
+
+export const PLANOS_DUVIDAS = [
+  { p: 'Posso começar no Básico e mudar depois?', r: 'Pode. Quando quiser mais páginas ou efeitos, o seu site muda de plano sem precisar ser refeito do zero, e a mensalidade passa a ser a do novo plano.' },
+  { p: 'Quanto tempo leva?', r: 'Básico e Médio ficam prontos em até 10 dias úteis. No Avançado, o prazo depende das animações e vem na proposta.' },
+  { p: 'Como é o pagamento?', r: 'A criação pode ser parcelada no Pix. A mensalidade cobre domínio, hospedagem, segurança e os ajustes do seu plano.' },
+  { p: 'Eu escolho as cores e a fonte?', r: 'Sim, entre opções prontas que já combinam e são fáceis de ler. No Avançado, as cores e a fonte são criadas para a sua marca.' },
+  { p: 'Por que o Avançado tem uma faixa de preço?', r: 'Porque a animação é feita sob medida (com vídeo ou com as suas fotos). Depois de entender o que você quer, mando o valor fechado.' },
+];

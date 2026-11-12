@@ -64,6 +64,7 @@ export default function Home() {
           <a href="#" aria-label={`${PERFIL.marca}, início`}><Marca clara /></a>
           <div className="hidden items-center gap-7 text-sm font-medium text-slate-300 md:flex">
             <a href="#servicos" className="hover:text-white">Serviços</a>
+            <Link href="/planos" className="hover:text-white">Planos</Link>
             <a href="#planilha" className="hover:text-white">Planilhas</a>
             <a href="#cases" className="hover:text-white">Projetos</a>
             <a href="#como-trabalho" className="hover:text-white">Como trabalho</a>
@@ -132,6 +133,11 @@ export default function Home() {
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {s.exemplos.map(e => <li key={e} className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600">{e}</li>)}
                   </ul>
+                  {s.id === 'sites' && (
+                    <Link href="/planos" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:underline">
+                      Ver planos e preços <Seta />
+                    </Link>
+                  )}
                 </Surgir>
               ))}
               <Surgir atraso={0.3} className="flex">
